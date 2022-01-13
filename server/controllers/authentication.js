@@ -1,6 +1,17 @@
 //logic to process a request
 const User = require("../models/user");
 
+const jwt = require("jwt-simple");
+const config = require("../config");
+
+//create function that takes user ID and encode it with secret
+function tokenForUser(user) {
+  //first argument is data we want to encode, second arg is secret used to encrypt it
+  const timestamp = new Date().getTime();
+  //sub = subject, iat = issued at time (both conventions of jason web tokens)
+  return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
+}
+
 exports.signup = function (req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
@@ -38,7 +49,7 @@ exports.signup = function (req, res, next) {
       }
 
       //respond to request indicating the user was created
-      res.json({ password: password });
+      res.json({ token: tokenForUser(user) });
     });
   });
 };
