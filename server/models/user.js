@@ -39,6 +39,18 @@ userSchema.pre("save", function (next) {
   });
 });
 
+//adding an instance to userSchema called comparePassword
+userSchema.methods.comparePassword = function (candidatePassword, callback) {
+  //           submitted password,   hashed and salted password
+  bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+    if (err) {
+      return callback(err);
+    }
+
+    callback(null, isMatch);
+  });
+};
+
 //Create the model class, with collection named 'user'
 const ModelClass = mongoose.model("user", userSchema);
 
