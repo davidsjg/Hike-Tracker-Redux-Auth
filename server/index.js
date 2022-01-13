@@ -16,13 +16,13 @@ const app = express();
 //morgan is logging framework
 app.use(morgan("combined"));
 //bodyParser parses incoming requests - specifically JSON - of all types
-app.use(bodyParser.json({ type: "*/" }));
+app.use(bodyParser.json({ type: "*/*" }));
 
 //pass app into router function
 router(app);
 
 //Server setup
-const port = process.env.PORT || 3090;
+const port = process.env.PORT || 3091;
 //create an HTTP server that knows how to receive requests, and anything that comes in, forward it on to express application
 const server = http.createServer(app);
 server.listen(port);
