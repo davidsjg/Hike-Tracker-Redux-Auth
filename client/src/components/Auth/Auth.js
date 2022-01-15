@@ -11,7 +11,14 @@ const initialState = {
 
 function Auth() {
   const [formData, setFormData] = useState(initialState);
-  const handleChange = () => {};
+  const [showPassword, setShowPassword] = useState(false);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+    console.log(formData);
+  };
 
   return (
     <div className={styles["mainContain"]}>
@@ -20,26 +27,52 @@ function Auth() {
         <div className={styles["firstName"]}>
           <p>
             First Name:
-            <input type="text" name="firstName" handlechange={handleChange} />
+            <input type="text" name="firstName" onChange={handleChange} />
           </p>
         </div>
         <div className={styles["lastName"]}>
           <p>
             Last Name:
-            <input type="text" name="lastName" handleChange={handleChange} />
+            <input type="text" name="lastName" onChange={handleChange} />
           </p>
         </div>
         <div className={styles["userName"]}>
           <p>
             Email:
-            <input type="text" name="email" handleChange={handleChange} />
+            <input type="text" name="email" onChange={handleChange} />
           </p>
         </div>
         <div className={styles["userPassword"]}>
           <p>
             Password:
-            <input type="text" name="password" handleChange={handleChange} />
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              onChange={handleChange}
+            />
+            <i
+              className="fas fa-eye"
+              onClick={() => setShowPassword(!showPassword)}
+            ></i>
           </p>
+        </div>
+        <div className={styles["userConfPassword"]}>
+          <p>
+            Confirm Password:
+            <input
+              type="password"
+              name="confirmPassword"
+              onChange={handleChange}
+            />
+            <i className="fas fa-eye"></i>
+          </p>
+        </div>
+        <div className={styles["submitButtonDiv"]}>
+          <div className={styles["submitButton"]}>
+            <p type="submit" onClick={handleSubmit}>
+              Submit
+            </p>
+          </div>
         </div>
       </form>
     </div>
