@@ -21,6 +21,7 @@ exports.signin = function (req, res, next) {
 exports.signup = function (req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
+  console.log(req);
 
   //make sure both email and password were sent from front end user
   if (!email || !password) {

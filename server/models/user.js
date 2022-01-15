@@ -9,6 +9,8 @@ const userSchema = new Schema({
   //mongo does not check for case, so we use lowercase
   email: { type: String, unique: true, lowercase: true },
   password: String,
+  firstName: String,
+  lastName: String,
 });
 
 //On save hook, encrypt password

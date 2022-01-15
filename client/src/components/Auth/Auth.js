@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Auth.module.css";
+import { signin } from "../../utils/API";
 
 const initialState = {
   firstName: "",
@@ -18,6 +19,10 @@ function Auth() {
 
   const handleSubmit = () => {
     console.log(formData);
+
+    signin(formData).then((data) => {
+      console.log(data);
+    });
   };
 
   return (
