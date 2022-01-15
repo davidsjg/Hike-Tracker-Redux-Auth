@@ -1,0 +1,37 @@
+.mainContain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 80px;
+}
+
+.leftHeader {
+  flex: 0.2;
+  text-align: center;
+}
+
+.leftLink i {
+  color: black;
+  size-adjust: 120%;
+}
+
+.centerHeader {
+  flex: 0.6;
+  text-align: center;
+}
+
+.centerHeader a {
+  text-decoration: none;
+  color: black;
+}
+
+.rightHeader {
+  flex: 0.2;
+  text-align: center;
+}
+
+.rightHeader a {
+  text-decoration: none;
+  color: black;
+}
