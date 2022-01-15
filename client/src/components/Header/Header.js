@@ -1,21 +1,21 @@
 import React from "react";
-import styles from "./Header.css";
+import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className={["mainContain"]}>
-      <div className="leftHeader">
-        <Link to="/" className={["leftLink"]}>
-          <i class="fas fa-hiking fa-lg"></i>
+    <div className={styles["mainContain"]}>
+      <div className={styles["leftHeader"]}>
+        <Link to="/" className={styles["leftLink"]}>
+          <i className="fas fa-hiking fa-lg"></i>
         </Link>
       </div>
-      <div className="centerHeader">
+      <div className={styles["centerHeader"]}>
         <Link to="/">
-          <h1>Hike Tracker 5000</h1>
+          <h1>Earth Churner</h1>
         </Link>
       </div>
-      <div className="rightHeader">
+      <div className={styles["rightHeader"]}>
         <Link to="/auth">
           <h4>Login/Signup</h4>
         </Link>
