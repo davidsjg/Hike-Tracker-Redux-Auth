@@ -19,9 +19,7 @@ exports.signin = function (req, res, next) {
 };
 
 exports.signup = function (req, res, next) {
-  const email = req.body.email;
-  const password = req.body.password;
-  console.log(req);
+  const { email, password, firstName, lastName } = req.body;
 
   //make sure both email and password were sent from front end user
   if (!email || !password) {
@@ -47,6 +45,8 @@ exports.signup = function (req, res, next) {
     const user = new User({
       email: email,
       password: password,
+      firstName: firstName,
+      lastName: lastName,
     });
 
     //save user to database
@@ -56,7 +56,7 @@ exports.signup = function (req, res, next) {
       }
 
       //respond to request indicating the user was created
-      res.json({ token: tokenForUser(user) });
+      res.json({ token: tokenForUser(user), user });
     });
   });
 };

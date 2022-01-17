@@ -13,16 +13,21 @@ const initialState = {
 function Auth() {
   const [formData, setFormData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState(null);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
-    console.log(formData);
-
     signin(formData).then((data) => {
       console.log(data);
+      setUser(data.data.user);
     });
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log(user);
   };
 
   return (
@@ -79,6 +84,7 @@ function Auth() {
             </p>
           </div>
         </div>
+        {/* <button onClick={handleClick}>click me</button> */}
       </form>
     </div>
   );
