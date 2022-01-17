@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styles from "./Auth.module.css";
 import { signin } from "../../utils/API";
 import { GoogleLogin } from "react-google-login";
@@ -23,6 +24,7 @@ function Auth() {
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -48,7 +50,7 @@ function Auth() {
 
     try {
       dispatch(userLogin(newUser));
-      // navigate("/");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

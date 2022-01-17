@@ -21,7 +21,12 @@ export const userLoginReducer = (state = { user: {} }, action) => {
     case actionTypes.GOOGLE_AUTH:
       return {
         loading: false,
-        ser: action.payload,
+        user: action.payload,
+      };
+    case actionTypes.LOG_OUT:
+      return {
+        loading: false,
+        user: {},
       };
 
     default:

@@ -2,12 +2,19 @@ import React from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Avatar, Typography } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { Avatar, Typography, Button } from "@material-ui/core";
+import { LOG_OUT } from "../../redux/constants/authConstants";
 
 function Header() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
   console.log(user);
+
+  const logout = () => {
+    dispatch({ type: LOG_OUT });
+  };
 
   return (
     <div className={styles["mainContain"]}>
@@ -32,6 +39,15 @@ function Header() {
             <Typography>
               {user.firstName} {user.lastName}
             </Typography>
+            <span>&nbsp;&nbsp;</span>
+            <Button
+              variant="contained"
+              className={styles["logoutButton"]}
+              color="primary"
+              onClick={logout}
+            >
+              Logout
+            </Button>
           </>
         ) : (
           <Link to="/auth">
