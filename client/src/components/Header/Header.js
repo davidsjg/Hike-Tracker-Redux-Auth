@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Avatar } from "@material-ui/core";
 
 function Header() {
   const user = useSelector((state) => state.auth.user);
@@ -21,6 +22,18 @@ function Header() {
         </Link>
       </div>
       <div className={styles["rightHeader"]}>
+        {/* {user 
+        ? (
+          <Avatar
+          className={userAvatar}
+          alt={user.firstName}
+          src={user.}
+          >
+
+          </Avatar>
+        )
+        : ()} */}
+
         <Link to="/auth">
           <h4>Login/Signup</h4>
         </Link>

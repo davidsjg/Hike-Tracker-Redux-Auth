@@ -34,6 +34,10 @@
 }
 
 .rightHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   flex: 0.2;
   text-align: center;
 }

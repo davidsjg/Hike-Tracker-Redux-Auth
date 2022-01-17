@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Auth.module.css";
 import { signin } from "../../utils/API";
+import { GoogleLogin } from "react-google-login";
+import Icon from "./icon";
+import { Button } from "@material-ui/core";
+import { GOOGLE_AUTH } from "../../redux/constants/authConstants";
 
 //Actions
 import { userLogin } from "../../redux/actions/authActions";
@@ -26,11 +30,31 @@ function Auth() {
 
   const handleSubmit = () => {
     dispatch(userLogin(formData));
+  };
 
-    // signin(formData).then((data) => {
-    //   console.log(data);
-    //   setUser(data.data.user);
-    // });
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+
+    console.log(result);
+    console.log(token);
+
+    const newUser = {
+      data: {
+        user: result,
+        token: token,
+      },
+    };
+
+    try {
+      dispatch(userLogin(newUser));
+      // navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const googleFailure = () => {
+    console.log("Google sign in was unsuccessful.");
   };
 
   const handleClick = (e) => {
@@ -93,6 +117,25 @@ function Auth() {
           </div>
         </div>
         {/* <button onClick={handleClick}>click me</button> */}
+        {/* <GoogleLogin
+          clientId="228274647442-0pcttjg921qm52skvrf9fhr62l6rc8es.apps.googleusercontent.com"
+          render={(renderProps) => (
+            <button
+              className={styles["googlebutton"]}
+              color="primary"
+              // fullWidth
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+              // startIcon={<Icon />}
+              variant="contained"
+            >
+              Google Sign In
+            </button>
+          )}
+          onSuccess={googleSuccess}
+          onFailure={googleFailure}
+          cookiePolicy="single_host_origin"
+        /> */}
       </form>
     </div>
   );

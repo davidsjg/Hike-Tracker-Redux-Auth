@@ -1,6 +1,7 @@
 import * as actionTypes from "../constants/authConstants";
 
 export const userLoginReducer = (state = { user: {} }, action) => {
+  console.log(action.payload);
   switch (action.type) {
     case actionTypes.USER_LOGIN_REQUEST:
       return {
@@ -16,6 +17,11 @@ export const userLoginReducer = (state = { user: {} }, action) => {
       return {
         loading: false,
         error: action.payload,
+      };
+    case actionTypes.GOOGLE_AUTH:
+      return {
+        loading: false,
+        ser: action.payload,
       };
 
     default:
