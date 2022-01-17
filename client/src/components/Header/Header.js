@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Avatar } from "@material-ui/core";
+import { Avatar, Typography } from "@material-ui/core";
 
 function Header() {
   const user = useSelector((state) => state.auth.user);
@@ -22,21 +22,22 @@ function Header() {
         </Link>
       </div>
       <div className={styles["rightHeader"]}>
-        {/* {user 
-        ? (
-          <Avatar
-          className={userAvatar}
-          alt={user.firstName}
-          src={user.}
-          >
-
-          </Avatar>
-        )
-        : ()} */}
-
-        <Link to="/auth">
-          <h4>Login/Signup</h4>
-        </Link>
+        {Object.keys(user).length !== 0 ? (
+          <>
+            <Avatar className={styles["userAvatar"]} alt={user.firstName}>
+              {user.firstName.charAt(0)}
+              {user.lastName.charAt(0)}
+            </Avatar>
+            <span>&nbsp;&nbsp;</span>
+            <Typography>
+              {user.firstName} {user.lastName}
+            </Typography>
+          </>
+        ) : (
+          <Link to="/auth">
+            <h4>Login/Signup</h4>
+          </Link>
+        )}
       </div>
     </div>
   );

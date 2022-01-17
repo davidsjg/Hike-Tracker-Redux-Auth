@@ -5,11 +5,9 @@ export const userLogin = (userData) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.USER_LOGIN_REQUEST });
 
-    console.log();
-
     const { data } = await axios.post("/signup", userData);
 
-    // const googleUser = userData.imageUrl ? userData : null;
+    const googleUser = userData.imageUrl ? userData : null;
 
     const { token, user } = data;
 
@@ -23,7 +21,7 @@ export const userLogin = (userData) => async (dispatch) => {
     //user token/info returned success, dispatch to store
     dispatch({
       type: actionTypes.USER_LOGIN_SUCCESS,
-      payload: newUser,
+      payload: googleUser ? googleUser : newUser,
     });
   } catch (error) {
     dispatch({
