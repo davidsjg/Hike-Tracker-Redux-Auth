@@ -1,8 +1,13 @@
 import React from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const user = useSelector((state) => state.auth.user);
+
+  console.log(user);
+
   return (
     <div className={styles["mainContain"]}>
       <div className={styles["leftHeader"]}>

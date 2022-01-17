@@ -9,8 +9,15 @@ export const userLogin = (userData) => async (dispatch) => {
 
     const { token, user } = data;
 
+    const newUser = {
+      ...user,
+      token: token,
+    };
+
+    console.log(newUser);
+
     //user token/info returned success, dispatch to store
-    dispatch({ type: actionTypes.USER_LOGIN_SUCCESS, payload: token, user });
+    dispatch({ type: actionTypes.USER_LOGIN_SUCCESS, payload: newUser });
   } catch (error) {
     dispatch({
       type: actionTypes.USER_LOGIN_FAIL,
