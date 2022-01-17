@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./Auth.module.css";
 import { signin } from "../../utils/API";
+
+//Actions
+import { userLogin } from "../../redux/actions/authActions";
 
 const initialState = {
   firstName: "",
@@ -14,15 +18,19 @@ function Auth() {
   const [formData, setFormData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
-    signin(formData).then((data) => {
-      console.log(data);
-      setUser(data.data.user);
-    });
+    dispatch(userLogin(formData));
+
+    // signin(formData).then((data) => {
+    //   console.log(data);
+    //   setUser(data.data.user);
+    // });
   };
 
   const handleClick = (e) => {
