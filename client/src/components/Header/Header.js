@@ -3,17 +3,18 @@ import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Avatar, Typography, Button } from "@material-ui/core";
 import { LOG_OUT } from "../../redux/constants/authConstants";
 
 function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
-
-  console.log(user);
 
   const logout = () => {
     dispatch({ type: LOG_OUT });
+    navigate("/");
   };
 
   return (

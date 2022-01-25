@@ -1,7 +1,6 @@
 import * as actionTypes from "../constants/authConstants";
 
 export const userLoginReducer = (state = { user: {} }, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case actionTypes.USER_LOGIN_REQUEST:
       return {

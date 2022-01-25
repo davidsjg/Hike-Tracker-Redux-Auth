@@ -32,6 +32,7 @@ function Auth() {
 
   const handleSubmit = () => {
     dispatch(userLogin(formData));
+    navigate("/");
   };
 
   const googleSuccess = async (res) => {
