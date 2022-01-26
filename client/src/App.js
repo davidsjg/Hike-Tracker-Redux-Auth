@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
-import Header from "./components/Header/Header";
 import styles from "./App.module.css";
+import Header from "./components/Header/Header";
+import SelectButtons from "./components/SelectButtons/SelectButtons";
 
 function App() {
   return (
     <>
       <div className={styles["mainContain"]}>
         <Header />
+        <SelectButtons />
         <Outlet />
       </div>
     </>
