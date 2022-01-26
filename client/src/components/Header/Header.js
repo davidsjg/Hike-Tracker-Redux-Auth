@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { Avatar, Typography, Button } from "@material-ui/core";
 import { LOG_OUT } from "../../redux/constants/authConstants";
 
+import SectionHeader from "./SectionHeader";
+import MainContain from "../MainContain/MainContain";
+
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,18 +21,19 @@ function Header() {
   };
 
   return (
-    <div className={styles["mainContain"]}>
-      <div className={styles["leftHeader"]}>
+    <MainContain cName={styles["mainContain"]}>
+      <SectionHeader cName={styles["leftHeader"]}>
         <Link to="/" className={styles["leftLink"]}>
           <i className="fas fa-hiking fa-lg"></i>
         </Link>
-      </div>
-      <div className={styles["centerHeader"]}>
+      </SectionHeader>
+
+      <SectionHeader cName={styles["centerHeader"]}>
         <Link to="/">
           <h1>Earth Churner</h1>
         </Link>
-      </div>
-      <div className={styles["rightHeader"]}>
+      </SectionHeader>
+      <SectionHeader cName={styles["rightHeader"]}>
         {Object.keys(user).length !== 0 ? (
           <>
             <Avatar className={styles["userAvatar"]} alt={user.firstName}>
@@ -55,8 +59,8 @@ function Header() {
             <h4>Login/Signup</h4>
           </Link>
         )}
-      </div>
-    </div>
+      </SectionHeader>
+    </MainContain>
   );
 }
 
