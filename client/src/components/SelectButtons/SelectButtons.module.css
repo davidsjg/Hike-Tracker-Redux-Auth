@@ -30,3 +30,7 @@
 .selectButton p {
   margin: 0;
 }
+
+.myHikes {
+  opacity: 0.2;
+}
