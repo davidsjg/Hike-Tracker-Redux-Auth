@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import styles from "./SelectButtons.module.css";
 import MainContain from "../MainContain/MainContain";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function SelectButtons() {
+function Home() {
   const user = useSelector((state) => state.auth.user);
 
   console.log(user);
@@ -47,4 +46,4 @@ function SelectButtons() {
   );
 }
 
-export default SelectButtons;
+export default Home;

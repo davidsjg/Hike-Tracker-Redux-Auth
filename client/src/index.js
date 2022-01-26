@@ -17,6 +17,7 @@ ReactDOM.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route index element={<SelectButtons />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/uploadHike" element={<UploadHike />} />
           <Route path="/explore" element={<Explore />} />

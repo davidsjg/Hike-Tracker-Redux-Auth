@@ -8,7 +8,8 @@ function App() {
     <>
       <div className={styles["mainContain"]}>
         <Header />
-        <SelectButtons />
+        {/* <SelectButtons /> */}
+        <Outlet />
       </div>
     </>
   );
