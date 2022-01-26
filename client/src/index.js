@@ -7,15 +7,18 @@ import Auth from "./components/Auth/Auth";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
-import Home from "./components/Home/Home";
+import UploadHike from "./components/UploadHike/UploadHike";
+import SelectButtons from "./components/SelectButtons/SelectButtons";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="auth" element={<Auth />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/uploadHike" element={<UploadHike />}>
+            {/* <Route index element={<Home />} /> */}
+          </Route>
         </Route>
       </Routes>
     </Router>

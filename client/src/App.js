@@ -9,7 +9,6 @@ function App() {
       <div className={styles["mainContain"]}>
         <Header />
         <SelectButtons />
-        <Outlet />
       </div>
     </>
   );
