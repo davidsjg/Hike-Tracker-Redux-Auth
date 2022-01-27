@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./Auth.module.css";
+import styles from "./LogIn.module.css";
 import { signin } from "../../utils/API";
 import { GoogleLogin } from "react-google-login";
 import Icon from "./icon";
@@ -19,7 +19,7 @@ const initialState = {
   confirmPassword: "",
 };
 
-function Auth() {
+function LogIn() {
   const [formData, setFormData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState(null);
@@ -94,17 +94,10 @@ function Auth() {
             </p>
           </div>
         </div>
-        <Link to="/logIn">
-          <div className={styles["logInDiv"]}>
-            <div className={styles["logInButton"]}>
-              <p type="submit">Have an Account? Log in</p>
-            </div>
-          </div>
-        </Link>
         {/* <button onClick={handleClick}>click me</button> */}
       </form>
     </div>
   );
 }
 
-export default Auth;
+export default LogIn;

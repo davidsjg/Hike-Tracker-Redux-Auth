@@ -12,7 +12,7 @@ import SelectButtons from "./components/SelectButtons/SelectButtons";
 import Explore from "./components/Explore/Explore";
 import MyHikes from "./components/MyHikes/MyHikes";
 import SelectButtonsIndex from "./components/SelectButtonsIndex/SelectButtonsIndex";
-import Home from "./components/Home/Home";
+import LogIn from "./components/LogIn/LogIn.js";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,7 +25,8 @@ ReactDOM.render(
             <Route path="/explore" element={<Explore />} />
             <Route path="/myHikes" element={<MyHikes />} />
           </Route>
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/signUp" element={<Auth />} />
+          <Route path="/logIn" element={<LogIn />} />
         </Route>
       </Routes>
     </Router>

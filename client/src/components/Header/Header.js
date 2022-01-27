@@ -57,7 +57,7 @@ function Header() {
               </Button>
             </>
           ) : (
-            <Link to="/auth">
+            <Link to="/signUp">
               <h4>Login/Signup</h4>
             </Link>
           )}

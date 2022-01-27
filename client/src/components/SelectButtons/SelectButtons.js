@@ -30,6 +30,10 @@ function SelectButtons() {
       setUploadHike(false);
       setExplore(false);
       setMyHikes(true);
+    } else {
+      setUploadHike(false);
+      setExplore(false);
+      setMyHikes(false);
     }
     console.log(currUrl);
   }, [currUrl]);
@@ -40,23 +44,23 @@ function SelectButtons() {
         <div className={styles["allButtons"]}>
           {uploadHike ? (
             <div className={`${styles.selectButton2} `}>
-              <p>My Hikes</p>
+              <p>Upload Hike</p>
             </div>
           ) : (
             <Link to="/uploadHike">
               <div className={`${styles.selectButton}`}>
-                <p>My Hikes</p>
+                <p>Upload Hike</p>
               </div>
             </Link>
           )}
           {explore ? (
             <div className={`${styles.selectButton2} `}>
-              <p>My Hikes</p>
+              <p>Explore</p>
             </div>
           ) : (
             <Link to="/explore">
               <div className={`${styles.selectButton}`}>
-                <p>My Hikes</p>
+                <p>Explore</p>
               </div>
             </Link>
           )}

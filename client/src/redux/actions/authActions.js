@@ -1,7 +1,7 @@
 import * as actionTypes from "../constants/authConstants";
 import axios from "axios";
 
-export const userLogin = (userData) => async (dispatch) => {
+export const userSignup = (userData) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.USER_LOGIN_REQUEST });
 
