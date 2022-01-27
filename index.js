@@ -19,10 +19,20 @@ app.use(morgan("combined"));
 //bodyParser parses incoming requests - specifically JSON - of all types
 app.use(bodyParser.json({ type: "*/*" }));
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(cors());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 //pass app into router function
 router(app);
+
+// Connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hikeTracker");
 
 //Server setup
 const port = process.env.PORT || 3001;
