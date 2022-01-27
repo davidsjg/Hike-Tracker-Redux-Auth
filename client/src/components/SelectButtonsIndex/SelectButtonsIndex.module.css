@@ -1,0 +1,24 @@
+.mainContain {
+  /* height: 300px;
+  width: 800px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 560px;
+  width: 780px;
+
+  margin: auto;
+}
+
+.indexImage {
+  background-image: url("https://i.imgur.com/Vd7pInL.jpg");
+  /* background-image: url("https://i.imgur.com/98WFnPb.jpg"); */
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  object-fit: contain;
+}
