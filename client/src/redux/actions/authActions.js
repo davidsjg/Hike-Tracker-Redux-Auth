@@ -40,16 +40,29 @@ export const userSignin = (userData) => async (dispatch) => {
 
     const { data } = await axios.post("/signin", userData);
 
-    const { token, user } = data;
+    console.log(data);
+
+    const { token, signedUser } = data;
 
     const newUser = {
-      ...user,
+      ...signedUser,
       token: token,
     };
 
+    dispatch({
+      type: actionTypes.USER_SIGNIN_SUCCESS,
+      payload: newUser,
+    });
+
     console.log(newUser);
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: actionTypes.USER_SIGNIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
   }
 };
 

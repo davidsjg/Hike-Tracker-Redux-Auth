@@ -16,7 +16,8 @@ function tokenForUser(user) {
 exports.signin = function (req, res, next) {
   //user has already had user and password auth'd, just need to give them a token
   //need acces to current user model = supplied by passport localLogin, when we return done(null, user), user is assigned to req.user
-  res.send({ token: tokenForUser(req.user) });
+  const signedUser = req.user;
+  res.send({ token: tokenForUser(req.user), signedUser });
 };
 
 exports.signup = function (req, res, next) {

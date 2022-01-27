@@ -30,7 +30,7 @@ function LogIn() {
   const handleSubmit = () => {
     console.log(formData);
     dispatch(userSignin(formData));
-    // navigate("/");
+    navigate("/");
   };
 
   const handleClick = (e) => {
