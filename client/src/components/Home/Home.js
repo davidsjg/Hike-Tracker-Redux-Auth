@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MainContain from "../MainContain/MainContain";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
+import styles from "./Home.module.css";
 
 function Home() {
   const user = useSelector((state) => state.auth.user);

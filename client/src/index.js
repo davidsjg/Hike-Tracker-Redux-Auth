@@ -11,6 +11,8 @@ import UploadHike from "./components/UploadHike/UploadHike";
 import SelectButtons from "./components/SelectButtons/SelectButtons";
 import Explore from "./components/Explore/Explore";
 import MyHikes from "./components/MyHikes/MyHikes";
+import SelectButtonsIndex from "./components/SelectButtonsIndex/SelectButtonsIndex";
+import Home from "./components/Home/Home";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,6 +20,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<SelectButtons />}>
+            <Route index element={<SelectButtonsIndex />} />
             <Route path="/uploadHike" element={<UploadHike />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/myHikes" element={<MyHikes />} />
