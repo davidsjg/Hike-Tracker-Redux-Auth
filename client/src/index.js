@@ -17,11 +17,12 @@ ReactDOM.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<SelectButtons />} />
+          <Route path="/" element={<SelectButtons />}>
+            <Route path="/uploadHike" element={<UploadHike />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/myHikes" element={<MyHikes />} />
+          </Route>
           <Route path="/auth" element={<Auth />} />
-          <Route path="/uploadHike" element={<UploadHike />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/myHikes" element={<MyHikes />} />
         </Route>
       </Routes>
     </Router>

@@ -18,8 +18,7 @@ function SelectButtons() {
         <div className={styles["allButtons"]}>
           <Link to="/uploadHike">
             <div className={styles["selectButton"]}>
-              <p>Upload</p>
-              <p>Hike</p>
+              <p>Upload Hike</p>
             </div>
           </Link>
           <Link to="/explore">
@@ -30,14 +29,12 @@ function SelectButtons() {
           {myHikes ? (
             <Link to="/myHikes">
               <div className={`${styles.selectButton} `}>
-                <p>My</p>
-                <p>Hikes</p>
+                <p>My Hikes</p>
               </div>
             </Link>
           ) : (
             <div className={`${styles.selectButton} ${myHikesLoggedIn}`}>
-              <p>My</p>
-              <p>Hikes</p>
+              <p>My Hikes</p>
             </div>
           )}
         </div>
