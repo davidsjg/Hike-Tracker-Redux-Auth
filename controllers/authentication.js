@@ -1,4 +1,5 @@
 //logic to process a request
+const mongoose = require("mongoose");
 const User = require("../models/user");
 
 const jwt = require("jwt-simple");
@@ -30,7 +31,7 @@ exports.signup = function (req, res, next) {
 
   //see if a user with the given email exists
   //existingUser = true if an email already exists, if they do not exist, returns null
-  User.findOne({ email: email }, function (err, existingUser) {
+  User.findOne({ email: email }, async function (err, existingUser) {
     //if no database connection
     if (err) {
       return next(err);
@@ -49,14 +50,24 @@ exports.signup = function (req, res, next) {
       lastName: lastName,
     });
 
-    //save user to database
-    user.save(function (err) {
-      if (err) {
-        return next(err);
-      }
+    try {
+      let test = await user.save();
 
-      //respond to request indicating the user was created
+      console.log(test);
+
       res.json({ token: tokenForUser(user), user });
-    });
+    } catch (error) {
+      res.status(409).json({ message: error.message });
+    }
+
+    //save user to database
+    // user.save(function (err) {
+    //   if (err) {
+    //     return next(err);
+    //   }
+
+    //   //respond to request indicating the user was created
+    //   res.json({ token: tokenForUser(user), user });
+    // });
   });
 };

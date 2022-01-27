@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 //DB setup
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hikeTracker");
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hikeTracker");
 
 //create instance of express
 const app = express();
@@ -32,11 +32,15 @@ if (process.env.NODE_ENV === "production") {
 router(app);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hikeTracker");
+const CONNECTION_URL =
+  "mongodb+srv://davidsjg:Colorado23@reduxapp.5jyvq.mongodb.net/hikeTracker?retryWrites=true&w=majority";
 
 //Server setup
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 //create an HTTP server that knows how to receive requests, and anything that comes in, forward it on to express application
-const server = http.createServer(app);
-server.listen(port);
-console.log("Server listening on: ", port);
+mongoose
+  .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() =>
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+  )
+  .catch((error) => console.log(error.message));
