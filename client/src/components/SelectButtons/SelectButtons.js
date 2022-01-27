@@ -1,41 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SelectButtons.module.css";
 import MainContain from "../MainContain/MainContain";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function SelectButtons() {
   const user = useSelector((state) => state.auth.user);
+  const currParam = useParams();
+  const currUrl = window.location.pathname;
 
-  console.log(user);
+  const [uploadHike, setUploadHike] = useState(false);
+  const [explore, setExplore] = useState(false);
+  const [myHikes, setMyHikes] = useState(false);
 
-  const [myHikes, setMyHikes] = useState(true);
-  //if user is logged in, apply myHikes className to div
-  const myHikesLoggedIn = !myHikes ? styles.myHikesOut : "";
+  const uploadHikeSelected = "";
+  const exploreSelected = "";
+  const myHikesSelected = !myHikes ? styles.myHikesOut : "";
+
+  useEffect(() => {
+    if (currUrl === "/uploadHike") {
+      setUploadHike(true);
+      setExplore(false);
+      setMyHikes(false);
+    } else if (currUrl === "/explore") {
+      setUploadHike(false);
+      setExplore(true);
+      setMyHikes(false);
+    } else if (currUrl === "/myHikes") {
+      setUploadHike(false);
+      setExplore(false);
+      setMyHikes(true);
+    }
+    console.log(currUrl);
+  }, [currUrl]);
+
   return (
     <>
       <MainContain cName={styles["mainContain"]}>
         <div className={styles["allButtons"]}>
-          <Link to="/uploadHike">
-            <div className={styles["selectButton"]}>
-              <p>Upload Hike</p>
+          {uploadHike ? (
+            <div className={`${styles.selectButton2} `}>
+              <p>My Hikes</p>
             </div>
-          </Link>
-          <Link to="/explore">
-            <div className={styles["selectButton"]}>
-              <p>Explore</p>
-            </div>
-          </Link>
-          {myHikes ? (
-            <Link to="/myHikes">
-              <div className={`${styles.selectButton} `}>
+          ) : (
+            <Link to="/uploadHike">
+              <div className={`${styles.selectButton}`}>
                 <p>My Hikes</p>
               </div>
             </Link>
-          ) : (
-            <div className={`${styles.selectButton} ${myHikesLoggedIn}`}>
+          )}
+          {explore ? (
+            <div className={`${styles.selectButton2} `}>
               <p>My Hikes</p>
             </div>
+          ) : (
+            <Link to="/explore">
+              <div className={`${styles.selectButton}`}>
+                <p>My Hikes</p>
+              </div>
+            </Link>
+          )}
+          {myHikes ? (
+            <div className={`${styles.selectButton2} `}>
+              <p>My Hikes</p>
+            </div>
+          ) : (
+            <Link to="/myHikes">
+              <div className={`${styles.selectButton}`}>
+                <p>My Hikes</p>
+              </div>
+            </Link>
           )}
         </div>
       </MainContain>

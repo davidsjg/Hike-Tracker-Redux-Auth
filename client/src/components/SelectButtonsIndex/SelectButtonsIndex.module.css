@@ -1,12 +1,13 @@
 .mainContain {
   /* height: 300px;
   width: 800px; */
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 560px;
-  width: 780px;
+  justify-content: center; */
+  height: 480px;
+  /* height: 72%; */
+  width: 60%;
 
   margin: auto;
 }
@@ -17,8 +18,7 @@
   height: 100%;
   width: 100%;
   border-radius: 5px;
-  padding-bottom: 10px;
-  background-repeat: no-repeat;
-  background-size: contain;
+  /* padding-bottom: 10px; */
+
   object-fit: contain;
 }
