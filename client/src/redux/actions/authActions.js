@@ -38,7 +38,7 @@ export const userSignin = (userData) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.USER_SIGNIN_REQUEST });
 
-    const { data } = await axios.post("/signin");
+    const { data } = await axios.post("/signin", userData);
 
     const { token, user } = data;
 
