@@ -34,6 +34,25 @@ export const userSignup = (userData) => async (dispatch) => {
   }
 };
 
+export const userSignin = (userData) => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.USER_SIGNIN_REQUEST });
+
+    const { data } = await axios.post("/signin");
+
+    const { token, user } = data;
+
+    const newUser = {
+      ...user,
+      token: token,
+    };
+
+    console.log(newUser);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // export const googleLogin = (userData) => async (dispatch) => {
 //   try {
 //     dispatch({ type: actionTypes.USER_LOGIN_REQUEST });

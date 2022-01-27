@@ -81,9 +81,9 @@
   background-color: white;
 }
 
-.logInButton p {
-  /* margin-top: 30px;
-  margin-bottom: 2px; */
+.logInLink {
+  text-decoration: none;
+  color: black;
 }
 
 @media (max-width: 865px) {

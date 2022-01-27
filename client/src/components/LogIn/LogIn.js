@@ -9,14 +9,11 @@ import { Button } from "@material-ui/core";
 import { GOOGLE_AUTH } from "../../redux/constants/authConstants";
 
 //Actions
-import { userSignup } from "../../redux/actions/authActions";
+import { userSignup, userSignin } from "../../redux/actions/authActions";
 
 const initialState = {
-  firstName: "",
-  lastName: "",
   email: "",
   password: "",
-  confirmPassword: "",
 };
 
 function LogIn() {
@@ -31,8 +28,9 @@ function LogIn() {
   };
 
   const handleSubmit = () => {
-    dispatch(userSignup(formData));
-    navigate("/");
+    console.log(formData);
+    dispatch(userSignin(formData));
+    // navigate("/");
   };
 
   const handleClick = (e) => {
@@ -44,18 +42,7 @@ function LogIn() {
     <div className={styles["mainContain"]}>
       <form className={styles["authForm"]}>
         <h3>Enter Username and Password</h3>
-        <div className={styles["firstName"]}>
-          <p>
-            First Name:
-            <input type="text" name="firstName" onChange={handleChange} />
-          </p>
-        </div>
-        <div className={styles["lastName"]}>
-          <p>
-            Last Name:
-            <input type="text" name="lastName" onChange={handleChange} />
-          </p>
-        </div>
+
         <div className={styles["userName"]}>
           <p>
             Email:
@@ -76,21 +63,11 @@ function LogIn() {
             ></i>
           </p>
         </div>
-        <div className={styles["userConfPassword"]}>
-          <p>
-            Confirm Password:
-            <input
-              type="password"
-              name="confirmPassword"
-              onChange={handleChange}
-            />
-            <i className="fas fa-eye"></i>
-          </p>
-        </div>
+
         <div className={styles["submitButtonDiv"]}>
           <div className={styles["submitButton"]}>
             <p type="submit" onClick={handleSubmit}>
-              Sign Up
+              Log In
             </p>
           </div>
         </div>

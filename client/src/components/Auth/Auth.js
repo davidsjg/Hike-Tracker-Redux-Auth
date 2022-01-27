@@ -94,10 +94,10 @@ function Auth() {
             </p>
           </div>
         </div>
-        <Link to="/logIn">
+        <Link to="/logIn" className={styles["logInLink"]}>
           <div className={styles["logInDiv"]}>
             <div className={styles["logInButton"]}>
-              <p type="submit">Have an Account? Log in</p>
+              <p>Have an Account? Log in</p>
             </div>
           </div>
         </Link>
