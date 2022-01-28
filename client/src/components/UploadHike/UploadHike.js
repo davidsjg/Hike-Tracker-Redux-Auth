@@ -3,8 +3,12 @@ import styles from "./UploadHike.module.css";
 import API from "../../utils/API";
 import MainContain from "../MainContain/MainContain";
 import Input from "../Input/Input";
+import { useDispatch } from "react-redux";
+
+import { saveHike } from "../../redux/actions/hikeActions";
 
 function UploadHike() {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     trail: "",
     distance: 0,
@@ -21,7 +25,8 @@ function UploadHike() {
 
   const handleClick = () => {
     console.log(formData);
-    API.hikePost(formData);
+    // API.hikePost(formData);
+    dispatch(saveHike(formData));
   };
 
   const propSetFormData = (data) => {
