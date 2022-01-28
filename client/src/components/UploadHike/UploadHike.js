@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./UploadHike.module.css";
-
+import API from "../../utils/API";
 import MainContain from "../MainContain/MainContain";
+import Input from "../Input/Input";
 
 function UploadHike() {
   const [formData, setFormData] = useState({
@@ -20,6 +21,11 @@ function UploadHike() {
 
   const handleClick = () => {
     console.log(formData);
+    API.hikePost(formData);
+  };
+
+  const propSetFormData = (data) => {
+    setFormData(data);
   };
 
   return (
