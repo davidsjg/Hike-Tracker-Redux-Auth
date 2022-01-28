@@ -7,7 +7,18 @@ export const saveHike = (userHike) => async (dispatch) => {
 
     const { data } = await axios.post("/hikePost", userHike);
 
-    console.log(data);
+    const { trail, distance, time } = data;
+
+    const newTrail = {
+      trail,
+      distance,
+      time,
+    };
+
+    dispatch({
+      type: actionTypes.SAVE_HIKE_SUCCESS,
+      payload: newTrail,
+    });
   } catch (error) {
     dispatch({
       type: actionTypes.SAVE_HIKE_FAIL,
