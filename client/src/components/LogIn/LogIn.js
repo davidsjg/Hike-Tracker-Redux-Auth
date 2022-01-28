@@ -8,7 +8,7 @@ import { Button } from "@material-ui/core";
 import { GOOGLE_AUTH } from "../../redux/constants/authConstants";
 
 //Actions
-import { userSignup, userSignin } from "../../redux/actions/authActions";
+import { userSignin } from "../../redux/actions/authActions";
 
 const initialState = {
   email: "",

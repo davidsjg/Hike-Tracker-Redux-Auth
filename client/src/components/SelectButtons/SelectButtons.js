@@ -35,7 +35,6 @@ function SelectButtons() {
       setExplore(false);
       setMyHikes(false);
     }
-    console.log(currUrl);
   }, [currUrl]);
 
   return (
