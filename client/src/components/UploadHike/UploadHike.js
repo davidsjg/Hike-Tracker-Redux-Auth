@@ -6,16 +6,16 @@ import Input from "../Input/Input";
 
 function UploadHike() {
   const [formData, setFormData] = useState({
+    trail: "",
     distance: 0,
     time: 0,
-    rating: 0,
   });
 
   useEffect(() => {
     setFormData({
+      trail: "",
       distance: "",
       time: "",
-      rating: "",
     });
   }, []);
 
@@ -33,11 +33,18 @@ function UploadHike() {
       <div className={styles["formHolder"]}>
         <form className={styles["inputForm"]}>
           <div className={styles["inputParams"]}>
+            <p>Trail:</p>
             <p>Distance:</p>
             <p>Time:</p>
-            <p>Rating:</p>
           </div>
+
           <div className={styles["inputData"]}>
+            <input
+              value={formData.trail}
+              onChange={(e) =>
+                setFormData({ ...formData, trail: e.target.value })
+              }
+            />
             <input
               value={formData.distance}
               onChange={(e) =>
@@ -48,12 +55,6 @@ function UploadHike() {
               value={formData.time}
               onChange={(e) =>
                 setFormData({ ...formData, time: e.target.value })
-              }
-            />
-            <input
-              value={formData.rating}
-              onChange={(e) =>
-                setFormData({ ...formData, rating: e.target.value })
               }
             />
           </div>
